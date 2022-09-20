@@ -1,70 +1,44 @@
+const slides = document.querySelectorAll('.swiper-slide');
+
 // slider initialization
 new Swiper('.swiper-container', {
   loop: true,
   slidesPerView: 1.25,
-});
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+    },
 
-const swiperWrapper = document.querySelector('.swiper-wrapper');
-const swiperSlides = document.querySelectorAll('.swiper-slide');
-const sedBlocks = document.querySelectorAll('.sed__block');
-const swiperSlideDuplicatePrev = document.querySelector('.swiper-slide-duplicate-prev');
-const swiperSlideDuplicateNext = document.querySelector('.swiper-slide-duplicate-next');
-const swiperSlideNext = document.querySelector('.swiper-slide-next');
+    1025: {
+      slidesPerView: 1.25,
+    },
+  },
+  on: {
+    slideNextTransitionStart: () => {
+      slides.forEach((slide, i) => {
+        slide.childNodes[1].childNodes[3].classList.remove('sed__block--active');
+      });
 
-if (!swiperSlideNext.childNodes[1].childNodes[3].classList.contains('sed__block--active')) {
-  swiperSlideNext.childNodes[1].childNodes[3].classList.add('sed__block--active');
-}
+      const slideActive = document.querySelector('.swiper-slide-active');
+      const slideNext = document.querySelector('.swiper-slide-next');
 
-// при изменении swiperSlideNext
-const observer = new MutationObserver(() => {
-  const swiperSlideActive = document.querySelector('.swiper-slide-active');
-  const swiperSlideNext = document.querySelector('.swiper-slide-next');
+      slideActive.childNodes[1].childNodes[3].classList.remove('sed__block--active');
+      slideNext.childNodes[1].childNodes[3].classList.add('sed__block--active');
+    },
+    slidePrevTransitionStart: () => {
+      slides.forEach((slide, i) => {
+        slide.childNodes[1].childNodes[3].classList.remove('sed__block--active');
+      });
 
-  if (swiperSlideActive.childNodes[1].childNodes[3].classList.contains('sed__block--active')) {
-    swiperSlideActive.childNodes[1].childNodes[3].classList.remove('sed__block--active');
-  }
+      const slideNext = document.querySelector('.swiper-slide-next');
+      const slideNextDup = document.querySelector('.swiper-slide-duplicate-next');
 
-  if (!swiperSlideNext.childNodes[1].childNodes[3].classList.contains('sed__block--active')) {
-    swiperSlideNext.childNodes[1].childNodes[3].classList.add('sed__block--active');
-  }
-});
-
-observer.observe(swiperSlideNext, {
-  subtree: true,
-  childList: true,
-  attributes: true,
-});
-
-// при изменении swiperSlideDuplicatePrev
-const observerPrev = new MutationObserver(() => {
-  const swiperSlideDuplicatePrev = document.querySelector('.swiper-slide-duplicate-prev');
-
-  if (
-    swiperSlideDuplicatePrev.childNodes[1].childNodes[3].classList.contains('sed__block--active')
-  ) {
-    swiperSlideDuplicatePrev.childNodes[1].childNodes[3].classList.remove('sed__block--active');
-  }
-});
-
-observerPrev.observe(swiperSlideDuplicatePrev, {
-  subtree: true,
-  childList: true,
-  attributes: true,
-});
-
-// при изменении swiperSlideDuplicatePrev
-const observerNext = new MutationObserver(() => {
-  const swiperSlideDuplicateNext = document.querySelector('.swiper-slide-duplicate-next');
-
-  if (
-    swiperSlideDuplicateNext.childNodes[1].childNodes[3].classList.contains('sed__block--active')
-  ) {
-    swiperSlideDuplicateNext.childNodes[1].childNodes[3].classList.remove('sed__block--active');
-  }
-});
-
-observerNext.observe(swiperSlideDuplicateNext, {
-  subtree: true,
-  childList: true,
-  attributes: true,
+      slideNext.childNodes[1].childNodes[3].classList.add('sed__block--active');
+      slideNextDup.childNodes[1].childNodes[3].classList.remove('sed__block--active');
+    },
+  },
 });

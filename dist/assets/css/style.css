@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 *,
 *::before,
 *::after {
@@ -250,5 +252,155 @@ a {
 @media screen and (max-width: 425px) {
     .gtc-4 {
         grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .sed__row {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+}
+
+.sed__column {
+    width: 50%;
+}
+
+@media screen and (max-width: 1023px) {
+    .sed__column {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .sed__column:first-child {
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (max-width: 1023px) {
+    .sed__column:first-child {
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+}
+
+.sed__column .swiper-container {
+    overflow: hidden !important;
+}
+
+.sed__column .swiper-container .swiper-wrapper {
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+.sed__column .swiper-container .swiper-wrapper .swiper-slide {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: end;
+    align-items: end;
+}
+
+.sed__column h2 {
+    font-size: calc(36px + 12 * ((100vw - 320px) / 1600));
+    line-height: 125%;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.sed__column p {
+    font-size: calc(16px + 2 * ((100vw - 320px) / 1600));
+    line-height: 100%;
+}
+
+.sed__img-main {
+    position: relative;
+    width: 75%;
+}
+
+@media screen and (max-width: 1024px) {
+    .sed__img-main {
+        width: 100%;
+    }
+}
+
+.sed__block {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    transition: -webkit-transform 0.4s ease-in-out !important;
+    transition: transform 0.4s ease-in-out !important;
+    transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out !important;
+}
+
+@media screen and (max-width: 1440px) {
+    .sed__block {
+        width: 150px;
+        height: 150px;
+        -webkit-transform: translateX(160%);
+        transform: translateX(160%);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .sed__block {
+        width: 100px;
+        height: 100px;
+        -webkit-transform: translateX(274%);
+        transform: translateX(274%);
+        top: auto;
+        bottom: 0;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .sed__block {
+        -webkit-transform: translateX(530%);
+        transform: translateX(530%);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sed__block {
+        -webkit-transform: translateX(305%);
+        transform: translateX(305%);
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .sed__block {
+        -webkit-transform: translateX(255%);
+        transform: translateX(255%);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .sed__block {
+        -webkit-transform: translateX(200%);
+        transform: translateX(200%);
+    }
+}
+
+.sed__block--active {
+    -webkit-transform: translateX(-10%);
+    transform: translateX(-10%);
+}
+
+@media screen and (max-width: 1024px) {
+    .sed__block--active {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
     }
 }
